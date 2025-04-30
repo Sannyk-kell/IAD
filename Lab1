@@ -1,0 +1,41 @@
+getwd()
+
+setwd("~/rstudio-data/lab1")
+
+getwd()
+
+# Встановлення пакету vcd
+install.packages("vcd")
+
+# Встановити пакет readxl
+install.packages("readxl")
+
+# Встановити пакет rio
+install.packages("rio")
+
+# Довідка пакету vcd
+help(package = "vcd")
+
+# Використання help.search() 
+help.search("regression")
+
+# Використання apropos("") 
+apropos("plot")
+
+# Завантаження пакету та перегляд набору даних
+library(vcd)
+
+data("Arthritis")
+
+print(Arthritis)
+
+# Обчистлення першого прикладу
+a <- 3 + 1/6 + 5.2
+b <- (4.6 - 5/12) * 0.4
+result1 <- a / b
+print(result1)
+
+# Обчистлення другого прикладу
+result2 <- sqrt((2 - sqrt(7))^2) + sqrt((3 - sqrt(7))^2)
+print(result2)
+
