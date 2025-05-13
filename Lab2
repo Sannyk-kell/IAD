@@ -1,0 +1,115 @@
+# Числовий вектор
+v1 <- c(1.2, 3.5, 6.7)
+v2 <- seq(1, 10, by = 2)
+v3 <- rep(5, times = 3)
+v_numeric <- c(v1, v2, v3)
+print(v_numeric)
+
+# Цілий вектор
+int1 <- c(1L, 2L, 3L)
+int2 <- 4:6
+v_integer <- c(int1, int2)
+print(v_integer)
+
+# Логічний вектор
+log1 <- c(TRUE, FALSE, TRUE)
+log2 <- rep(FALSE, 2)
+v_logical <- c(log1, log2)
+print(v_logical)
+
+# Символьний вектор
+char1 <- c("apple", "banana")
+char2 <- rep("orange", 2)
+v_character <- c(char1, char2)
+print(v_character)
+
+# Комплексний вектор
+comp1 <- c(1+2i, 3+4i)
+comp2 <- complex(real = 5, imaginary = 6)
+v_complex <- c(comp1, comp2)
+print(v_complex)
+
+# Операції з матрицями
+A <- matrix(c(1, 4, 0, 1, 2, 3), nrow = 2, byrow = TRUE)
+B <- matrix(c(1, 2, -1, 4, 5, -3), nrow = 3, byrow = TRUE)
+print(A)
+print(B)
+# Добуток
+AB <- A %*% B
+print(AB)
+# Об'єднання рядків і стовпців
+C <- rbind(A, A)
+D <- cbind(A, A) 
+print(C)
+print(D)
+
+# Створення масиву
+frequency <- array(
+  data = c(12, 5, 8,  20, 10, 7),  
+  dim = c(3, 2),                  
+  dimnames = list(
+    words = c("мова", "лінгвістика", "текст"),
+    texts = c("Текст1", "Текст2")
+  )
+)
+
+print(frequency)
+
+# Створення списку
+word_info <- list(
+  termin = "корпус",
+  frequensy = 42,
+  sinonim = c("збірка", "тексти", "архів"),
+  part = c("іменник"),
+  comm = "Термін широко вживається в корпусній лінгвістиці"
+)
+
+print(word_info)
+
+# Доступ до елемента
+word_info$termin
+
+# Кількість елементів масиву
+length(frequency)
+
+# Використання факторів
+words <- c("мовлення", "читати", "швидко", "лексика", "думати", "граматика")
+lang_parts <- factor(
+  c("іменник", "дієслово", "прислівник", "іменник", "дієслово", "іменник")
+)
+tabl <- data.frame(word = words, lang_part = lang_parts)
+
+print(tabl)
+
+table(lang_parts)
+
+# Створення фрейму 
+corp <- data.frame(
+  word = c("лексика", "читати", "швидко", "мовлення", "граматика", "думати"),
+  part_lang = c("іменник", "дієслово", "прислівник", "іменник", "іменник", "дієслово"),
+  use_count = c(15, 22, 10, 18, 9, 25),
+  word_lenght = nchar(c("лексика", "читати", "швидко", "мовлення", "граматика", "думати"))
+)
+
+print(corp)
+
+# Опис dataset та візуалізація зв'язків
+data("airquality")
+
+plot(airquality$Temp, airquality$Ozone,
+     main = "Ozone vs Temperature",
+     xlab = "Temperature (F)",
+     ylab = "Ozone (ppb)",
+     pch = 19,
+     col = "blue")
+
+# Побудова графіка за допомогою ggplot
+install.packages("ggplot2")
+library(ggplot2)
+data <- na.omit(airquality)
+ggplot(data, aes(x = Temp, y = Ozone)) +
+  geom_point(color = "steelblue", size = 2) +
+  labs(title = "Вплив температури на рівень озону",
+       x = "Температура (°F)",
+       y = "Озон (ppb)") +
+  theme_minimal()
