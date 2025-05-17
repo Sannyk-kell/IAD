@@ -1,0 +1,41 @@
+#Діаграма щільності народжуваності
+data$Birthrate <- as.numeric(gsub(",", ".", data$Birthrate))
+
+ggplot(data, aes(x = Birthrate)) +
+  geom_density(fill = "plum", alpha = 0.6) +
+  theme_minimal() +
+  labs(
+    title = "Діаграма щільності народжуваності",
+    x = "Народжуваність (на 1000 осіб)",
+    y = "Щільність"
+  )
+
+#Побудова boxplot ВВП на душу населення
+data$GDP <- as.numeric(gsub(",", ".", data$GDP....per.capita.))
+
+ggplot(data, aes(x = Region, y = GDP)) +
+  geom_boxplot(fill = "orange", color = "black", alpha = 0.7) +
+  theme_minimal() +
+  labs(
+    title = "Boxplot ВВП на душу населення по регіонах",
+    x = "Регіон",
+    y = "GDP per capita"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#Гістограма грамотності
+data$Literacy <- as.numeric(gsub(",", ".", data$Literacy....))
+
+ggplot(data, aes(x = Literacy)) +
+  geom_histogram(fill = "skyblue", color = "black", bins = 20) +
+  theme_minimal() +
+  labs(title = "Гістограма рівня грамотності населення")
+
+#Скрипкова діаграма смертності по регіонах
+data$Infant.mortality <- as.numeric(gsub(",", ".", data$Infant.mortality..per.1000.births.))
+
+ggplot(data, aes(x = Region, y = Infant.mortality)) +
+  geom_violin(fill = "lightgreen", alpha = 0.6) +
+  theme_minimal() +
+  labs(title = "Скрипкова діаграма смертності", x = "Регіон", y = "Смертність (на 1000 народжень)") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
